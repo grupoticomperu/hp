@@ -1,0 +1,16 @@
+C:\xamppp\htdocs\blog>php artisan tinker
+Psy Shell v0.10.7 (PHP 8.0.2 — cli) by Justin Hileman
+
+>>> $user = new App\Models\User;
+
+>>> $user->name = "Michael"
+=> "Michael"
+
+>>> $user->email = "michael@ticomperu.com"
+=> "michael@ticomperu.com"
+
+>>> $user->password = bcrypt('123456')
+=> "$2y$10$qPo.QhZVQ2n9PP2OTz0RUu/5Mcj5qbyKPlAwMYoJz2D2XRLPvc8hS"
+
+>>> $user->save()
+=> true

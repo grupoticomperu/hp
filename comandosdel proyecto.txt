@@ -1,0 +1,11 @@
+//crea el modelo y el controlador
+php artisan make:model Photo -mc
+
+
+php artisan storage:link
+
+php artisan make:controller CategoriesController
+php artisan make:controller TagsController
+
+
+php artisan make:request StorePostRequest
