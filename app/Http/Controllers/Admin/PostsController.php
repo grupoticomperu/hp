@@ -65,35 +65,39 @@ class PostsController extends Controller
     //te da como resultado un jason    
     //dd($request->get('tags'));
         //$post = new Post;
-        $post->title = $request->get('title');
+       ///// $post->title = $request->get('title');
        // $post->url = Str::slug($request->get('title'));
-        $post->body = $request->get('body');
-        $post->iframe = $request->get('iframe');
-        $post->excerpt = $request->get('excerpt');
+       ///// $post->body = $request->get('body');
+       ///// $post->iframe = $request->get('iframe');
+       ///// $post->excerpt = $request->get('excerpt');
 
        // $post->published_at =  $request->has('published_at')?Carbon::parse($request->get('published_at')):null;
-        $post->published_at =  $request->get('published_at');
+       ///// $post->published_at =  $request->get('published_at');
         //$post->category_id = $request->get('category');
        // $post->category_id = Category::find($cat = $request->get('category'))? $cat : Category::create(['name'=>$cat])->id;
-        $post->category_id = $request->get('category');
+       ///// $post->category_id = $request->get('category_id');
 
-        $post->save();
+       ///// $post->save();
+        ////$post->update($request->except('tags'));
 
+
+        $post->update($request->all());
+        $post->syncTags($request->get('tags'));
 
         //$tags = [];
         //foreach ($request->get('tags') as $tag) {
         //    $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
         //}
 
-        $tags = collect($request->get('tags'))->map(function($tag){
-            return Tag::find($tag) ? $tag : Tag::create(['name'=>$tag])->id;
-        });
+       //$tags = collect($request->get('tags'))->map(function($tag){
+        //    return Tag::find($tag) ? $tag : Tag::create(['name'=>$tag])->id;
+       // });
 
 
 
 
         //$post->tags()->sync($request->get('tags'));
-        $post->tags()->sync($tags);
+        //$post->tags()->sync($tags);
 
        // return back()->with('flash','Tu publicación fue guardada Con éxito');
 

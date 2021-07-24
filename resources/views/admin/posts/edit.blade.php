@@ -110,11 +110,11 @@
               
                 <div class="form-group {{ $errors->has('category_id') ? 'text-danger' : ''}}">
                   <label>Categorias</label>
-                  <select name="category" class="form-control select2">
+                  <select name="category_id" class="form-control select2">
                     <option value="">Selecciona una categoria</option>
                     @foreach($categories as $category)
                     <option value="{{$category->id}}"
-                            {{ old('category',$post->category_id)== $category->id ? 'selected':''}} >{{$category->name}}</option>
+                            {{ old('category_id',$post->category_id)== $category->id ? 'selected':''}} >{{$category->name}}</option>
                     @endforeach
                   </select>
                    {!! $errors->first('category_id','<span class="help-block">:message</span>') !!}

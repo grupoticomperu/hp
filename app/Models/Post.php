@@ -13,7 +13,10 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];//deshabilita la asignacion masiva
+    //protected $guarded = [];//deshabilita la asignacion masiva
+    protected $fillable =[
+        'title','body','iframe','excerpt','published_at','category_id'
+    ];
 
     public function getRouteKeyName()
     {
@@ -72,9 +75,19 @@ class Post extends Model
     {
        // $this->attributes['published_at'] =  $request->has('published_at')?Carbon::parse($request->get('published_at')):null;
         
-         $this->attributes['category_id'] =  Category::find($category))? $category : Category::create(['name'=>$category])->id;
+         $this->attributes['category_id'] =  Category::find($category)? $category : Category::create(['name'=>$category])->id;
     }
 
+
+    public function syncTags($tags)
+    {
+
+        $tagIds = collect($tags)->map(function($tag){
+            return Tag::find($tag) ? $tag : Tag::create(['name'=>$tag])->id;
+        });
+
+        return $this->tags()->sync($tagIds);
+    }
 
 }
 
