@@ -9,7 +9,10 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
-    protected $guarded = [];//deshabilita la asignacion masiva
+    //protected $guarded = [];//deshabilita la asignacion masiva
+    protected $fillable =[
+        'name','url'
+    ];
 
     public function getRouteKeyName()
     {

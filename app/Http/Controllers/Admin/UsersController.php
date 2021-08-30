@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
-use App\Models\Category;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-
-class CategoriesController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+         $users = User::all();
+         return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        //
     }
 
     /**
@@ -37,8 +37,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('categories.index');
+        //
     }
 
     /**
@@ -47,20 +46,20 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show', compact('user'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-       // $categories = Category::findOrFail($category);
-        return view('admin.categories.edit', compact('category'));
+        //
     }
 
     /**
@@ -70,12 +69,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-       // $categories = Category::findOrFail($id);
-        $category->update($request->all());
-         return redirect()->route('categories.index');
-
+        //
     }
 
     /**
@@ -86,8 +82,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Category::findOrFail($id)->delete();
-        
-         return redirect()->route('categories.index');
+        //
     }
 }

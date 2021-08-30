@@ -194,8 +194,7 @@
   @push('scripts')
   
 
-
-  	 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.1/min/dropzone.min.js"></script> 
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.1/min/dropzone.min.js"></script> 
     
     
 

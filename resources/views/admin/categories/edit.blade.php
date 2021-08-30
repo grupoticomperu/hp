@@ -22,7 +22,7 @@
   
  <section class="content">
       <div class="container-fluid">
-        <form method="POST" action="{{ route('categories.update', $categories ) }}">
+        <form method="POST" action="{{ route('categories.update', $category) }}">
           {{csrf_field()}} {{ method_field('PUT') }}
         <div class="row">
          
@@ -40,7 +40,7 @@
 
                       <div class="form-group {{ $errors->has('name') ? 'text-danger' : '' }}">
                         <label for="name">Categoria</label>
-                        <input name="name" type="text" value="{{old('name', $categories->name)}}" class="form-control" id="name" placeholder="Ingrese la Categoria">
+                        <input name="name" type="text" value="{{old('name', $category->name)}}" class="form-control" id="name" placeholder="Ingrese la Categoria">
                         {!! $errors->first('name','<span class="help-block">:message</span>') !!}
                       </div>
 

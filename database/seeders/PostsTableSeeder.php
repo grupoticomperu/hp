@@ -40,6 +40,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p> esto es un resumen de mi primer post es de mi primer post esto es un resumen de mi primer post</p>";
         $post->published_at = Carbon::now()->subDays(4);
         $post->category_id= 1;
+        $post->user_id= 1;
         $post->save();
         //$post->tags()->attach(Tag::create(['name'=>'etiqueta 1']));
 
@@ -50,6 +51,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p> esto es un resumen de mi segundo post es de mi segundo post esto es un resumen de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(3);
         $post->category_id= 1;
+        $post->user_id= 1;
         $post->save();
         //$post->tags()->attach(Tag::create(['name'=>'etiqueta 2']));
 
@@ -60,6 +62,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p> esto es un resumen de mi tercer post es de mi tercer post esto es un resumen de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(2);
         $post->category_id= 2;
+        $post->user_id= 1;
         $post->save();
        // $post->tags()->attach(Tag::create(['name'=>'etiqueta 3']));
 
@@ -70,6 +73,7 @@ class PostsTableSeeder extends Seeder
         $post->body = "<p> esto es un resumen de mi cuarto post es de mi cuarto post esto es un resumen de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id= 2;
+        $post->user_id= 2;
         $post->save();
         //$post->tags()->attach(Tag::create(['name'=>'etiqueta 4']));
 

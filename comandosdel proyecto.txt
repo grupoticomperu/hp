@@ -9,3 +9,32 @@ php artisan make:controller TagsController
 
 
 php artisan make:request StorePostRequest
+
+==========================
+
+php artisan make:policy PostPolicy -m Post
+
+
+===========================
+
+php artisan tinker
+use Spatie\Permission\Models\Role;
+
+$adminRole = Role::create(['name'=>'Admin'])
+$u = App\Models\User::first()
+$u->assignRole($adminRole)
+$u->hasRole('admin')
+
+
+
+use Spatie\Permission\Models\Permission;
+Permission::create( ['name' => 'Ver Posts']);
+
+use Spatie\Permission\Models\Role;
+$role = Role::find(1);
+
+$role->givePermissionTo($permission)
+
+
+
+php artisan make:controller Admin/UsersController -r

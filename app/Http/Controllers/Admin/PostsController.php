@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -17,7 +16,22 @@ class PostsController extends Controller
 {
     public function index()
     {
-         $posts = Post::all();
+         //$posts = Post::all();
+        // $posts = Post::where('user_id', auth()->id())->get();
+         //$posts = auth()->user()->posts;
+
+        $posts = Post::allowed()->get();
+
+       // if( auth()->user()->hasRole('Admin') )
+      //  {
+       //     $posts = Post::all();
+           // return $query;
+       // }
+      //  else
+      //  {
+      //      $posts = auth()->user()->posts;
+      // }
+
          return view('admin.posts.index', compact('posts'));
     }
 
@@ -33,17 +47,18 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->authorize('create', new Post);
    
         $this->validate($request, [
             'title' => 'required'
         ]);
 
-        $post = Post::create($request->only('title')
-           // [
-           //'title' => $request->get('title'),
-            //'url' => str::slug($request->get('title'))
-           // ]
-         );
+        $post = Post::create([
+            //$request->only('title')
+            'title' => $request->get('title'),
+            'user_id' => auth()->id()
+        ]);
 
         return redirect()->route('admin.posts.edit', $post);
 
@@ -51,14 +66,19 @@ class PostsController extends Controller
 
 
     public function edit(Post $post){
+
+        $this->authorize('update', $post);
+
         $categories = Category::all();
-    	$tags = Tag::all();
+    	  $tags = Tag::all();
     	return view('admin.posts.edit',compact('categories','tags','post'));
     }
+    
 
-   public function update(Post $post, StorePostRequest $request)
+    public function update(Post $post, StorePostRequest $request)
     {
-   
+    
+        $this->authorize('update', $post);
 
     // return Post::create($request->all());
     //esto ejecuta y se sale
@@ -80,7 +100,6 @@ class PostsController extends Controller
        ///// $post->save();
         ////$post->update($request->except('tags'));
 
-
         $post->update($request->all());
         $post->syncTags($request->get('tags'));
 
@@ -94,8 +113,6 @@ class PostsController extends Controller
        // });
 
 
-
-
         //$post->tags()->sync($request->get('tags'));
         //$post->tags()->sync($tags);
 
@@ -104,6 +121,12 @@ class PostsController extends Controller
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación fue guardada Con éxito');
         
     }
+
+    /*public function destroy(Post $post){
+
+      
+    }*/
+    
 
 }
 

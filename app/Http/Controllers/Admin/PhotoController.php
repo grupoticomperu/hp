@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-
-
 class PhotoController extends Controller
 {
     public function store(Post $post)
@@ -31,10 +29,17 @@ class PhotoController extends Controller
        //$photoUrl  tiene el valor de: /storage/dffffffffjhsahasgk.jpg
        //en la tabla guardamos esta ruta /storage/dffffffffjhsahasgk.jpg
        //para mostrar la imagen debemos llamar a esta ruta
+        //return request()->file('photo')->store('posts','public');
 
+       /* $post->photos()->create([
+
+            'url' => request()->file('photo')->store('posts','public'),
+        ]);
+        */
 
     	Photo::create([
     		'url' => Storage::url($photo),
+        //    'url' =>request()->file('photo')->store('posts','public'),
         //    'url' => request()->file('photo')->store('posts','public');
     		'post_id' => $post->id
 
@@ -47,6 +52,8 @@ class PhotoController extends Controller
     public function destroy(Photo $photo)
     {
         $photo->delete();
+
+        /*Storage::disk('public')->delete($photo->url);*/
         
         $photoPath = str_replace('storage','public',$photo->url);
         //para eliminar cambiamos storage por public ya qye la imagen esta almacenada en 

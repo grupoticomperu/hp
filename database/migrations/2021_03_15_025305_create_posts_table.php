@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('body')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->unsignedinteger('category_id')->nullable();
+            $table->unsignedinteger('user_id');
             $table->timestamps();
         });
     }

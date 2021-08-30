@@ -13,8 +13,9 @@ class CategoriesController extends Controller
     	return view('welcome',[
     		//'category' => $category,
     		'title' => "Publicaciones de la categoria:  $category->name ",
-    		'posts'=>$category->posts()->paginate(3)]);
-
+    		//'posts'=> $category->posts  cuando va solo no es necesario poner()
+    		'posts'=> $category->posts()->paginate(3)
+    	]);
     	
     }
 }

@@ -1,4 +1,3 @@
-
 @extends('admin.layout')
     @section('header')
         <div class="container-fluid">
