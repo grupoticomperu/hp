@@ -22,7 +22,8 @@
   
  <section class="content">
       <div class="container-fluid">
-        <form method="POST" action="{{ route('categories.update', $category) }}">
+
+        <form method="POST" action="{{ route('categories.update', $category) }}" enctype="multipart/form-data">
           {{csrf_field()}} {{ method_field('PUT') }}
         <div class="row">
          
@@ -37,6 +38,18 @@
                   <!-- form start -->
                   
                     <div class="card-body">
+
+
+                      <img width="100px" src="{{ Storage::url($category->imagen) }}">
+
+
+                      <div class="custom-file">
+                          
+                          <label  for="imagen">Subir imagen</label>
+                          <input type="file"  name="imagen">
+                          
+                      </div>
+
 
                       <div class="form-group {{ $errors->has('name') ? 'text-danger' : '' }}">
                         <label for="name">Categoria</label>

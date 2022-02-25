@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\StorePostRequest;
 
 
+
 class PostsController extends Controller
 {
     public function index()
@@ -44,7 +45,6 @@ class PostsController extends Controller
     }
 
 
-
     public function store(Request $request)
     {
 
@@ -67,7 +67,8 @@ class PostsController extends Controller
 
     public function edit(Post $post){
 
-        $this->authorize('update', $post);
+        //$this->authorize('update', $post);
+        $this->authorize('view', $post);
 
         $categories = Category::all();
     	  $tags = Tag::all();
@@ -122,10 +123,16 @@ class PostsController extends Controller
         
     }
 
-    /*public function destroy(Post $post){
+    public function destroy(Post $post){
 
+      $this->authorize('delete', $post);
+      $post->delete();
+
+      return redirect()
+      ->route('admin.posts.index')
+      ->with('flash', 'La publi fue eliminada');
       
-    }*/
+    }
     
 
 }

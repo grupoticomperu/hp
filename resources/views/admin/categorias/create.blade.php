@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">inicio</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('categories.index')}}">Categorias</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('categoria.index')}}">Categorias</a></li>
                     <li class="breadcrumb-item active">Crear</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,7 +22,7 @@
  <section class="content">
       <div class="container-fluid">
 
-        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('categoria.store') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="row">
          
@@ -51,10 +51,10 @@
                           </div>
                       </div>
 
-                        <div class="form-group {{ $errors->has('name') ? 'text-danger' : '' }}">
-                          <label for="name">Categoria</label>
-                          <input name="name" type="text" class="form-control" id="name" placeholder="Ingrese la Categoria" value="{{old('name')}}">
-                          {!! $errors->first('name','<span class="help-block">:message</span>') !!}
+                        <div class="form-group {{ $errors->has('nombre') ? 'text-danger' : '' }}">
+                          <label for="nombre">Categoria</label>
+                          <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese la Categoria" value="{{old('nombre')}}">
+                          {!! $errors->first('nombre','<span class="help-block">:message</span>') !!}
 
                         </div>
                 

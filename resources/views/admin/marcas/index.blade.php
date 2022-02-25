@@ -3,13 +3,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Todas las Categorias </h1>
-                <a href="{{ route('categories.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Crear Categorias</a>
+                <h1 class="m-0">Todas las Marcas </h1>
+                <a href="{{ route('marca.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Crear Marcas</a>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">inicio</a></li>
-                <li class="breadcrumb-item active">Categorias</li>
+                <li class="breadcrumb-item active">Marcas</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -38,19 +38,19 @@
 
               <tbody>
 
-                  @foreach ($categories as $category)
+                  @foreach ($marcas as $marca)
                       <tr>
-                          <td>{{ $category->id }}</td>
-                          <td>{{ $category->name }}</td>
-                          <td><img width="100px" src="{{ Storage::url($category->imagen) }}"></td>
+                          <td>{{ $marca->id }}</td>
+                          <td>{{ $marca->name }}</td>
+                          <td><img width="100px" src="{{ Storage::url($marca->imagen) }}"></td>
                           <td>
-                              <a href="{{ route('categories.show', $category)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
-                              <a href="{{ route('categories.edit', $category)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
+                              <a href="{{ route('marca.show', $marca)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
+                              <a href="{{ route('marca.edit', $marca)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
 
 
    
 
-                                <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $category->id }}"
+                                <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $marca->id }}"
                     class="btn btn-xs btn-danger"><i class="fas fa-times-circle"></i></button>
                         
 
@@ -101,34 +101,6 @@
     </script>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <form method="POST" action="{{ route('admin.posts.store') }}">
-          {{ csrf_field() }}
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Título de la Publicación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <div class="form-group {{ $errors->has('title') ? 'text-danger' : '' }}">
-                          <label for="exampleInputEmail1">Título de la Publicación</label>
-                          <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el título de la Publicación">
-                          {!! $errors->first('title','<span class="help-block">:message</span>') !!}
-                    </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Crear Publicación</button>
-              </div>
-            </div>
-          </div>
-      </form>  
-    </div>
-
-
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -146,8 +118,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
-                <form id="formDelete" method="POST" action="{{ route('categories.destroy',0) }}"
-                    data-action="{{ route('categories.destroy',0) }}">
+                <form id="formDelete" method="POST" action="{{ route('marca.destroy',0) }}"
+                    data-action="{{ route('marca.destroy',0) }}">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger">Borrar</button>

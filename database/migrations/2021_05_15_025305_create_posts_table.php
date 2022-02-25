@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePostsTable extends Migration
 {
-    /**
+    /***
      * Run the migrations.
      *
      * @return void
@@ -21,8 +21,10 @@ class CreatePostsTable extends Migration
             $table->text('iframe')->nullable();
             $table->text('body')->nullable();
             $table->timestamp('published_at')->nullable();
-            $table->unsignedinteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedinteger('user_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Crear Categoria </h1>
+                    <h1 class="m-0">Crear Tag </h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">inicio</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('categories.index')}}">Categorias</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tag.index')}}">Tag</a></li>
                     <li class="breadcrumb-item active">Crear</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,7 +22,7 @@
  <section class="content">
       <div class="container-fluid">
 
-        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('tag.store') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="row">
          
@@ -32,7 +32,7 @@
                 <div class="card card-primary">
 
                     <div class="card-header">
-                      <h3 class="card-title">Nueva Categoria</h3>
+                      <h3 class="card-title">Nuevo tag </h3>
                     </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -40,20 +40,10 @@
                     <div class="card-body">
 
 
-                  <div class="custom-file">
-                          
-                          <label  for="imagen">Subir imagen</label>
-                          <input type="file"  name="imagen" value="{{old('imagen')}}">
-                          <div>
-                              @error('imagen')
-                                <small class="text-danger">{{ $message }}</small>
-                              @enderror
-                          </div>
-                      </div>
 
                         <div class="form-group {{ $errors->has('name') ? 'text-danger' : '' }}">
-                          <label for="name">Categoria</label>
-                          <input name="name" type="text" class="form-control" id="name" placeholder="Ingrese la Categoria" value="{{old('name')}}">
+                          <label for="name">Tag</label>
+                          <input name="name" type="text" class="form-control" id="name" placeholder="Ingrese el tag" value="{{old('name')}}">
                           {!! $errors->first('name','<span class="help-block">:message</span>') !!}
 
                         </div>
@@ -65,7 +55,7 @@
                 <!-- /.card -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Guardar Categoria</button>
+                        <button type="submit" class="btn btn-primary btn-block">Guardar el Tag</button>
                     </div>
 
               </div>

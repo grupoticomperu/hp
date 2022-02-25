@@ -5,7 +5,8 @@
           </div>
           <div class="post-category">
             <span class="category text-capitalize">
-              <a href="{{ route('categories.showp',$post->category)}}">{{ $post->category->name }}</a>
+
+              <a href="{{ route('categories.showp',$post->category)}}">{{ $post->category->name}}</a>
             </span>
             <!-- category se creo en el modelo Post, es la relacion belongsto -->
             <!-- si le das var_dump($post->category) te muestra lo que tiene y si no hay data te muestra NULL -->

@@ -1,15 +1,16 @@
 <?php
-namespace App\Http\Controllers\Admin;
 
-use App\Models\Post;
-use App\Models\Photo;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Admin;
+use App\Models\Product;
+use App\Models\Image;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PhotoController extends Controller
+class ImageController extends Controller
 {
-    public function store(Post $post)
+    //
+    public function store(Product $product)
     {
     	
     	$this->validate(request(), [
@@ -37,32 +38,18 @@ class PhotoController extends Controller
         ]);
         */
 
-    	Photo::create([
+       
+
+    	Image::create([
     	   	'url' => Storage::url($photo),
         //    'url' =>request()->file('photo')->store('public'),
         //    'url' => request()->file('photo')->store('posts','public');
-    		'post_id' => $post->id
+    		'product_id' => $product->id
 
     	]);
-
-
     }
 
 
-    public function destroy(Photo $photo)
-    {
-        $photo->delete();
-
-        /*Storage::disk('public')->delete($photo->url);*/
-        
-        $photoPath = str_replace('storage','public',$photo->url);
-        //para eliminar cambiamos storage por public ya qye la imagen esta almacenada en 
-        //la carpeta public y no en la ca´peta storage 
-        Storage::delete($photoPath);
-
-        return back()->with('flash','Foto Eliminada');
-
-    }
 
 
 

@@ -1,0 +1,23 @@
+
+php artisan migrate
+
+//elimina la ultima migracion
+php artisan migrate:rollback
+
+php artisan
+
+php artisan make:model Post -m
+//crea controller y carpeta Admin
+php artisan make:controller Admin/PostController
+php artisan make:controller PageController
+php artisan make:request CreateMessageRequest
+
+//creando modelos y migraciones 
+php artisan make:model Producto -m
+php artisan make:model Categoria -m
+php artisan make:model Marca -m
+php artisan make:model Subcategoria -m
+
+//limpia la base de datos
+php artisan migrate:fresh
+php artisan migrate:fresh --seed

@@ -17,6 +17,26 @@ php artisan make:policy PostPolicy -m Post
 
 ===========================
 
+instalando laravel-permission
+===========================
+
+composer require spatie/laravel-permission
+composer update
+
+
+poner eso en config/app.php
+Spatie\Permission\PermissionServiceProvider::class,
+
+
+poner este codigo para publicar
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+php artisan optimize:clear
+
+
+php artisan migrate:fresh --seed
+
 php artisan tinker
 use Spatie\Permission\Models\Role;
 
@@ -38,3 +58,7 @@ $role->givePermissionTo($permission)
 
 
 php artisan make:controller Admin/UsersController -r
+
+php artisan make:request StorePostRequest
+
+php artisan make:model Product -m

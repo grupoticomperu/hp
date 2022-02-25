@@ -3,13 +3,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Todas las publicaciones </h1>
-                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"> </i> Crear Publicación</button>
+                <h1 class="m-0">Lista de Productos </h1>
+                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModalp"><i class="fa fa-plus"> </i> Crear Producto</button>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">inicio</a></li>
-                <li class="breadcrumb-item active">Posts</li>
+                <li class="breadcrumb-item active">Productos</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -37,14 +37,14 @@
 
               <tbody>
 
-                  @foreach ($posts as $post)
+                  @foreach ($products as $product)
                       <tr>
-                          <td>{{ $post->id }}</td>
-                          <td>{{ $post->title }}</td>
-                          <td>{{ $post->excerpt }}</td>
+                          <td>{{ $product->id }}</td>
+                          <td>{{ $product->titulo }}</td>
+                          <td>{{ $product->resumen }}</td>
                           <td>
-                              <a href="{{ route('posts.show', $post)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
-                              <a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
+                              <a href="{{ route('posts.show', $product)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
+                              <a href="{{ route('admin.posts.edit', $product)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
                               <a href="" class="btn btn-xs btn-danger"><i class="fas fa-times-circle"></i></a>
 
 
@@ -96,27 +96,27 @@
     </script>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <form method="POST" action="{{ route('admin.posts.store') }}">
+    <div class="modal fade" id="exampleModalp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form method="POST" action="{{ route('admin.product.store') }}">
           {{ csrf_field() }}
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Título de la Publicación</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ingresando Nuevo Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                  <div class="form-group {{ $errors->has('title') ? 'text-danger' : '' }}">
-                          <label for="exampleInputEmail1">Título de la Publicación</label>
-                          <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el título de la Publicación">
-                          {!! $errors->first('title','<span class="help-block">:message</span>') !!}
+                  <div class="form-group {{ $errors->has('titulo') ? 'text-danger' : '' }}">
+                          <label for="titulo">Título del producto </label>
+                          <input name="titulo" type="text" class="form-control" id="titulo" placeholder="Ingrese el título del producto" required>
+                          {!! $errors->first('titulo','<span class="help-block">:message</span>') !!}
                     </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Crear Publicación</button>
+                <button class="btn btn-primary">Crear Producto</button>
               </div>
             </div>
           </div>

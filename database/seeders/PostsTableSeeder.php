@@ -18,11 +18,12 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        Post::truncate();
-        Category::truncate();
+       //Post::truncate();
+       // Category::truncate();
         //Tag::truncate();
 
-        
+        //al activar truncate la migracion con seed falla
+        //php artisan migrate:fresh --seed
 
         $category = new Category;
         $category->name = "Categoria 1";

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Marca extends Model
 {
     use HasFactory;
-    //protected $guarded = [];//deshabilita la asignacion masiva
+
     protected $fillable =[
         'name','url','imagen'
     ];
@@ -27,10 +27,5 @@ class Category extends Model
     }
 
 
-    public function posts()
-    {
-    	return $this->hasmany(Post::class);
-
-    }
 
 }
