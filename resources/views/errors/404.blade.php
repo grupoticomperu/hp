@@ -1,6 +1,7 @@
 @extends('layout')
 
-@section('content')
+@section('contenido')
+
 	<section class="pages container">
 		<div class="page page-about">
 			<h1 class="text-capitalize">Página no Encontrada</h1>
@@ -8,4 +9,5 @@
 		</div>
 		
 	</section>
+
 @endsection

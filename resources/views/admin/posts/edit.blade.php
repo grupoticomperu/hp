@@ -93,6 +93,7 @@
                    <h3 class="card-title">Crear una Publicación</h3>
               </div>
             <div class="card-body">
+              
                 <div class="form-group">
                     <label>Fecha de Publicación:</label>
 

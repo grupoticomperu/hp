@@ -19,9 +19,9 @@ class PostsController extends Controller
     {
          //$posts = Post::all();
         // $posts = Post::where('user_id', auth()->id())->get();
-         //$posts = auth()->user()->posts;
+         $posts = auth()->user()->posts;
 
-        $posts = Post::allowed()->get();
+       // $posts = Post::allowed()->get();
 
        // if( auth()->user()->hasRole('Admin') )
       //  {
@@ -54,9 +54,11 @@ class PostsController extends Controller
             'title' => 'required'
         ]);
 
+        //$post = Post::create($request->only('title'));
         $post = Post::create([
-            //$request->only('title')
+            
             'title' => $request->get('title'),
+            //para saber quien esta creando el post
             'user_id' => auth()->id()
         ]);
 
@@ -87,7 +89,7 @@ class PostsController extends Controller
     //dd($request->get('tags'));
         //$post = new Post;
        ///// $post->title = $request->get('title');
-       // $post->url = Str::slug($request->get('title'));
+          // $post->url = Str::slug($request->get('title'));
        ///// $post->body = $request->get('body');
        ///// $post->iframe = $request->get('iframe');
        ///// $post->excerpt = $request->get('excerpt');
@@ -126,6 +128,7 @@ class PostsController extends Controller
     public function destroy(Post $post){
 
       $this->authorize('delete', $post);
+      
       $post->delete();
 
       return redirect()

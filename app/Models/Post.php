@@ -76,6 +76,7 @@ class Post extends Model
 
     }
 
+    //relacion muchos a uno con user
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');

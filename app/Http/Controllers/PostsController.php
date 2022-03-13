@@ -14,12 +14,14 @@ class PostsController extends Controller
         
         //$posts = \App\Models\Post::latest('published_at')->get();
         //$post = Post::find($id);
+        
      	if($post->isPublished() || auth()->check())
      	{
      		return view('posts.show', compact('post'));
      	}
 
      	abort(404);
+        //return view('errors.404');
         
     }
 }
