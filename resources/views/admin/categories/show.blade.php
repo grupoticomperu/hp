@@ -22,8 +22,8 @@
   
  <section class="content">
       <div class="container-fluid">
-        <form method="POST" action="{{ route('categories.update', $category) }}">
-          {{csrf_field()}} {{ method_field('PUT') }}
+       
+         
         <div class="row">
          
           <!-- left column -->
@@ -63,7 +63,7 @@
          
 
         </div>
-        </form>
+ 
         <!-- /.row -->
       </div><!-- /.container-fluid -->
  </section>

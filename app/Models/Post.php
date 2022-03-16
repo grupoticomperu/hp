@@ -48,13 +48,16 @@ class Post extends Model
               ->latest('published_at');  
     }
 
+    
     public function scopeAllowed($query)
     {
-       // if( auth()->user()->hasRole('Admin') )
+        //if( auth()->user()->hasRole('Admin') )
         if( auth()->user()->can('view', $this) )
         {
            // $posts = Post::all();
             return $query;
+           // return $query->Post::all(); no funcina
+
         }
     
         //   $posts = auth()->user()->posts;
@@ -62,6 +65,8 @@ class Post extends Model
         
 
     }
+
+
 
     public function isPublished()
     {

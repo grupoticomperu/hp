@@ -12,16 +12,15 @@ use Illuminate\Support\Str;
 use App\Http\Requests\StorePostRequest;
 
 
-
 class PostsController extends Controller
 {
     public function index()
     {
          //$posts = Post::all();
         // $posts = Post::where('user_id', auth()->id())->get();
-         $posts = auth()->user()->posts;
+        /// $posts = auth()->user()->posts;
 
-       // $posts = Post::allowed()->get();
+        $posts = Post::allowed()->get();
 
        // if( auth()->user()->hasRole('Admin') )
       //  {
@@ -69,8 +68,8 @@ class PostsController extends Controller
 
     public function edit(Post $post){
 
-        //$this->authorize('update', $post);
-        $this->authorize('view', $post);
+        $this->authorize('update', $post);
+       // $this->authorize('view', $post);
 
         $categories = Category::all();
     	  $tags = Tag::all();

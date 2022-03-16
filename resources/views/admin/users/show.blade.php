@@ -3,6 +3,7 @@
 @section('content')
 
 	<div class="row">
+
 		<div class="col-md-3">
 			<div class="card card-primary card-outline">
               <div class="card-body box-profile">
@@ -46,22 +47,26 @@
 				
 			
 				<div class="card-body box-profile">
-					@forelse($user->posts as $post)
-						<a href="{{ route('posts.show', $post) }}" target="_blank">
-							<strong>{{ $post->title}}</strong>
-						</a>
-						<br>
-						<small class="text-muted">Publicado el: {{ $post->published_at->format('d/m/Y') }}</small>
-						<p class="text-muted">{{ $post->excerpt }}</p>
-						@unless($loop->last)
-							<hr>
-						@endunless
-
-					@empty
 					
-						<small class="text-muted">No tiene ublicaciones</small>	
+						@forelse($user->posts as $post)
+							<a href="{{ route('posts.show', $post) }}" target="_blank">
+								<strong>{{ $post->title}}</strong>
+							</a>
+							<br>
+								@if($post->published_at)
+								<small class="text-muted">Publicado el: {{ $post->published_at->format('d/m/Y') }}</small>
+								@endif
+							<p class="text-muted">{{ $post->excerpt }}</p>
+							@unless($loop->last)
+								<hr>
+							@endunless
 
-					@endforelse
+						@empty
+						
+							<small class="text-muted">No tiene publicaciones</small>	
+
+						@endforelse
+					
 					
 				</div>
 			</div>
@@ -106,7 +111,7 @@
 		<div class="col-md-3">
 			<div class="card card-primary card-outline">
 				<div class="box-header with-border">
-					<h3 class="box-title">Permisos Extra</h3>
+					<h3 class="box-title">Permisos Adicionales</h3>
 					<hr>
 				</div>
 				

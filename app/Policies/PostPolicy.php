@@ -17,7 +17,7 @@ class PostPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-/*
+
     public function before($user)
     {
         if($user->hasRole('Admin'))
@@ -26,7 +26,7 @@ class PostPolicy
         }
     }
 
-*/
+
 
     public function viewAny(User $user)
     {
@@ -43,8 +43,8 @@ class PostPolicy
     public function view(User $user, Post $post)
     {
         //return false;
-        return $user->id === $post->user_id;
-        //|| $user->hasPermissionTo('view posts');
+        return $user->id === $post->user_id
+               || $user->hasPermissionTo('view Post');
     }
 
     /**
@@ -55,9 +55,9 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return true;
+       // return true;
         //return $user->id === $post->user_id
-       // return $user->hasPermissionTo('create posts');
+        return $user->hasPermissionTo('create Post');
     }
 
     /**
@@ -69,8 +69,8 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-         return $user->id === $post->user_id;
-         // || $user->hasPermissionTo('Update posts');
+         return $user->id === $post->user_id
+                || $user->hasPermissionTo('update Post');
 
     }
 
@@ -83,7 +83,8 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id
+               || $user->hasPermissionTo('delete Post');
     }
 
     /**

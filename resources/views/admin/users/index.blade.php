@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Todas las usuarios </h1>
+                <h1 class="m-0">Lista de usuarios </h1>
                 <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"> </i> Crear Usuario</button>
             </div><!-- /.col -->
             <div class="col-sm-6">
@@ -43,11 +43,22 @@
                           <td>{{ $user->id }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->getRoleNames()->implode(', ')}}</td>
+                          <td>{{ $user->getRoleNames()->implode(', ') }}</td>
                           <td>
-                              <a href="{{ route('admin.users.show', $user)}}" class="btn btn-xs btn-info" target="_blank"><i class="fas fa-eye"></i></a>
-                              <a href="{{ route('admin.users.edit', $user)}}" class="btn btn-xs btn-info" target="_blank"><i class="fas fa-pencil-alt"></i></a>
-                              <a href="" class="btn btn-xs btn-danger"><i class="fas fa-times-circle"></i></a>
+                              <a href="{{ route('admin.users.show', $user)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
+                              <a href="{{ route('admin.users.edit', $user)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
+                            
+
+                              <form method="POST"
+                                  action="{{ route('admin.users.destroy', $user)}}"
+                                  style="display: inline">
+                                  {{ csrf_field()}} {{ method_field('DELETE') }}
+                                  <button class="btn btn-xs btn-danger"
+                                  onclick="return confirm('¿Estas seguro de eliminar al usuario?')">
+                                    <i class="fas fa-times-circle"></i>
+                                  </button>
+                                
+                              </form>
 
 
 
@@ -65,7 +76,6 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Acciones</th>
-                
               </tr>
               </tfoot>
             </table>
@@ -105,21 +115,21 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Título de la Usuario</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Título de la Publicación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                   <div class="form-group {{ $errors->has('title') ? 'text-danger' : '' }}">
-                          <label for="exampleInputEmail1">Título de la Usuario</label>
-                          <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el título de la Usuario">
+                          <label for="exampleInputEmail1">Título de la Publicación</label>
+                          <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el título de la Publicación">
                           {!! $errors->first('title','<span class="help-block">:message</span>') !!}
                     </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Crear Usuario</button>
+                <button class="btn btn-primary">Crear Publicación</button>
               </div>
             </div>
           </div>

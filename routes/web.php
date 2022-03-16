@@ -34,7 +34,9 @@ Auth::routes();
 
 //Route::get('admin', 'App\Http\Controllers\AdminController@index');//llama al dashboard
 
-Route::group(['prefix' =>'admin', 
+Route::group([
+             // 'as' => 'admin',
+              'prefix' =>'admin', 
               'namespace'=>'\App\Http\Controllers\Admin', 
               'middleware' => 'auth'], 
               //Route::get('admin/posts', 'Admin@PostsController@index')
@@ -42,21 +44,23 @@ Route::group(['prefix' =>'admin',
              
              Route::get('/', 'AdminController@index')->name('dashboard');
 
-             /*Route::resource('posts', 'PostsController', ['except'=>'show']);*/
+             /*Route::resource('posts', 'PostsController', ['except'=>'show', 'as'=>'admin']);*/
              
              Route::get('posts', 'PostsController@index')->name('admin.posts.index');            
              Route::get('posts/create', 'PostsController@create')->name('admin.posts.create');
              Route::post('posts', 'PostsController@store')->name('admin.posts.store');
              Route::get('posts/{post}', 'PostsController@edit')->name('admin.posts.edit');
              Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update');
-            
+             Route::delete('posts/{post}', 'PostsController@destroy')->name('admin.posts.destroy');
+
+
 
              Route::post('posts/{post:id}/photos', 'PhotoController@store')->name('admin.posts.photos.store');
+
+
              Route::delete('posts/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
              
-             
-
-
+          
              Route::get('product', 'ProductController@index')->name('admin.product.index');
              Route::post('product', 'ProductController@store')->name('admin.product.store');
              Route::get('product/{product}', 'ProductController@edit')->name('admin.product.edit');
@@ -70,6 +74,7 @@ Route::group(['prefix' =>'admin',
              Route::resource('tag', 'TagController');
              Route::resource('categoria', 'CategoriaController');
              Route::resource('marca', 'MarcaController');
+             
              Route::resource('users', 'UsersController', ['as' =>'admin']);
 
         }    

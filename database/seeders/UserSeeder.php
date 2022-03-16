@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
+//importamos para asignar roles y permisos
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+//
 use App\Models\User;
 
 
@@ -16,17 +18,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //Role::truncate();
-        //user::truncate();
         //Permission::truncate();
+        //Role::truncate();
+        //User::truncate();
+        
 
        $adminRole = Role::create(['name'=>'Admin']);
        $writerRole = Role::create(['name'=>'Writer']);
 
+       
         $viewPostsPermission = Permission::create(['name'=>'view Post']);
         $createPostsPermission = Permission::create(['name'=>'create Post']);
         $updatePostsPermission = Permission::create(['name'=>'update Post']);
         $deletePostsPermission = Permission::create(['name'=>'delete Post']);
+       
 
         $admin = new User;
         $admin->name = 'Michael';
