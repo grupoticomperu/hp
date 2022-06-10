@@ -62,3 +62,128 @@ php artisan make:controller Admin/UsersController -r
 php artisan make:request StorePostRequest
 
 php artisan make:model Product -m
+
+php artisan make:model Slider -m
+
+
+//creando el controlador asociado al modelo
+php artisan make:controller Admin/SlidersController -r --model=Slider
+
+//creando seeder para slider
+php artisan  make:seeder  SlidersTableSeeder
+
+php artisan migrate:fresh --seed
+php artisan db:seed
+
+php artisan make:request CreateStoreSliderRequest
+
+
+//offer
+php artisan make:model Offer -m
+php artisan make:controller Admin/OffersController -r --model=Offer
+php artisan  make:seeder  OffersTableSeeder
+
+//homeservices
+php artisan make:model Homeservice -m
+php artisan make:controller Admin/HomeservicesController -r --model=Homeservice
+php artisan  make:seeder  HomeservicesTableSeeder
+
+//configurations
+php artisan make:model Configuration -m
+php artisan make:controller Admin/ConfigurationsController -r --model=Configuration
+php artisan  make:seeder  ConfigurationsTableSeeder
+
+//about
+php artisan make:model About -m
+php artisan make:controller Admin/AboutsController -r --model=About
+php artisan make:controller AboutsController -r --model=About
+php artisan  make:seeder  AboutsTableSeeder
+
+//ConfigurationsController
+php artisan make:model Pagecontact -m
+php artisan make:controller Admin/PagecontactController -r --model=Pagecontact
+php artisan make:controller PagecontactController
+php artisan  make:seeder  PagecontactTableSeeder
+
+
+//ConfigurationsController
+php artisan make:model Contact -m
+php artisan make:controller Admin/ContactsController -r --model=Contact
+php artisan make:controller ContactsController
+//php artisan  make:seeder  ContactTableSeeder
+
+
+//categoryservices
+php artisan make:model Categoryservice -m
+php artisan make:controller Admin/CategoryservicesController -r --model=Categoryservice
+php artisan make:controller CategoryservicesController
+php artisan  make:seeder  CategoryservicesTableSeeder
+
+//Subcategoryservices
+php artisan make:model Subcategoryservice -m
+php artisan make:controller Admin/SubcategoryservicesController -r --model=Subcategoryservice
+php artisan make:controller SubcategoryservicesController
+php artisan  make:seeder  SubcategoryservicesTableSeeder
+
+
+//Services
+php artisan make:model Service -m
+php artisan make:controller Admin/ServicesController -r --model=Service
+php artisan make:controller ServicesController
+php artisan  make:seeder  ServicesTableSeeder
+
+
+//categoryhostings
+php artisan make:model Categoryhosting -m
+php artisan make:controller Admin/CategoryhostingsController -r --model=Categoryhosting
+php artisan make:controller CategoryhostingsController
+php artisan  make:seeder  CategoryhostingsTableSeeder
+
+//Subcategoryhostings
+php artisan make:model Subcategoryhosting -m
+php artisan make:controller Admin/SubcategoryhostingsController -r --model=Subcategoryhosting
+php artisan make:controller SubcategoryhostingsController
+php artisan  make:seeder  SubcategoryhostingsTableSeeder
+
+
+
+//Hosting
+php artisan make:model Hosting -m
+php artisan make:controller Admin/HostingsController -r --model=Hosting
+php artisan make:controller HostingsController
+php artisan  make:seeder  HostingsTableSeeder
+
+
+//Blog
+php artisan make:model Blog -m
+php artisan make:controller Admin/BlogsController -r --model=Blog
+php artisan make:controller BlogsController
+php artisan  make:seeder  BlogsTableSeeder
+
+
+//Porque why
+php artisan make:model Why -m
+php artisan make:controller Admin/WhiesController -r --model=Why
+php artisan make:controller WhiesController/*no es necesario*/
+php artisan  make:seeder  WhiesTableSeeder
+
+
+//Porque question
+php artisan make:model Question -m
+php artisan make:controller Admin/QuestionsController -r --model=Question
+
+php artisan  make:seeder  QuestionsTableSeeder
+
+
+//works
+php artisan make:model Work -m
+php artisan make:controller Admin/WorksController -r --model=Work
+
+php artisan  make:seeder  WorksTableSeeder
+
+
+//team
+php artisan make:model Team -m
+php artisan make:controller Admin/TeamsController -r --model=Team
+
+php artisan  make:seeder  TeamsTableSeeder

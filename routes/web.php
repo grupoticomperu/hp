@@ -3,18 +3,27 @@
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Post;
-/*
-|--------------------------------------------------------------------------
-| Web Routess
-|--------------------------------------------------------------------------
-|| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Route::get('/', 'App\Http\Controllers\PagesController@home')->name('pages.home');
-//Route::get('blog/{id}', 'App\Http\Controllers\PostsController@show');//esto es por defecto id
+Route::get('blog/', 'App\Http\Controllers\PagesController@blog')->name('pages.blog');
 Route::get('blog/{post}', 'App\Http\Controllers\PostsController@show')->name('posts.show');
+
+Route::get('proyectosweb/', 'App\Http\Controllers\PagesController@proyectos')->name('pages.proyecto');
+Route::get('proyectosweb/{work}', 'App\Http\Controllers\PagesController@showp')->name('proyecto.showp');
+
+Route::get('nosotros/', 'App\Http\Controllers\AboutsController@index')->name('about.index');
+ Route::get('contactenos/', 'App\Http\Controllers\PagecontactController@index')->name('pagecontacs.index'); 
+//Route::post('contactenos/', 'App\Http\Controllers\ContactsController@store')->name('contacts.store');
+Route::post('contactenos/', 'App\Http\Controllers\PagesController@store')->name('contacts.store');
+Route::get('soluciones-web/{subcategoryservice}', 'App\Http\Controllers\SubcategoryservicesController@show')->name('sucategoryservices.show');
+Route::get('hostings/{subcategoryhosting}', 'App\Http\Controllers\SubcategoryhostingsController@show')->name('sucategoryhosting.show');
+
+//Route::get('hostings/{hosting}', 'App\Http\Controllers\HostingsController@index')->name('hostings.index');
+
+//Route::get('blog/{id}', 'App\Http\Controllers\PostsController@show');//esto es por defecto id
+/* Route::get('blog/{post}', 'App\Http\Controllers\PostsController@show')->name('posts.show'); */
+Route::get('hostings-show/{hosting}', 'App\Http\Controllers\HostingsController@show')->name('hostingss.show');
+
 
 Route::get('categorias/{category?}', 'App\Http\Controllers\CategoriesController@show')->name('categories.showp');
 Route::get('tags/{tag}', 'App\Http\Controllers\TagsController@show')->name('tags.showp');
@@ -51,6 +60,11 @@ Route::group([
              Route::post('posts', 'PostsController@store')->name('admin.posts.store');
              Route::get('posts/{post}', 'PostsController@edit')->name('admin.posts.edit');
              Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update');
+
+
+
+
+
              Route::delete('posts/{post}', 'PostsController@destroy')->name('admin.posts.destroy');
 
 
@@ -74,8 +88,26 @@ Route::group([
              Route::resource('tag', 'TagController');
              Route::resource('categoria', 'CategoriaController');
              Route::resource('marca', 'MarcaController');
+
+             Route::resource('sliders', 'SlidersController');
+             Route::resource('configurations', 'ConfigurationsController');
+             Route::resource('offers', 'OffersController');
+             Route::resource('homeservices', 'HomeservicesController');
+             Route::resource('abouts', 'AboutsController');
+
+             Route::resource('hostings', 'HostingsController');
+             Route::resource('whies', 'WhiesController');
+             Route::resource('questions', 'QuestionsController');
+             Route::resource('services', 'ServicesController');
+             Route::resource('works', 'WorksController');
+             Route::resource('teams', 'TeamsController');
+
+             Route::post('offerstate/{id}', 'OffersController@activar')->name('admin.offer.state');
              
+
              Route::resource('users', 'UsersController', ['as' =>'admin']);
+             Route::put('users/{user}/roles', 'UsersRolesController@update')->name('admin.users.roles.update');
+             Route::put('users/{user}/permissions', 'UsersPermissionsController@update')->name('admin.users.permissions.update');
 
         }    
 );
@@ -83,7 +115,4 @@ Route::group([
 
 
 //Route::get('admin/posts', 'App\Http\Controllers\Admin\PostsController@index');
-
-
-
 

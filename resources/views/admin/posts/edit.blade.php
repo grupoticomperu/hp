@@ -58,16 +58,14 @@
                      <!-- </div>-->
                       <!-- le ponemos !! a cambio del { y del }-->
                     </div>
-
-                    
+                   
 
                     <div class="form-group {{ $errors->has('body') ? 'text-danger' : ''}}">
                       <label>Contenido de la Publicación</label>
                       <textarea rows= "10" name="body" id="editor" class="form-control" placeholder="Ingrese la publicación Completa">{{old('body', $post->body)}}</textarea>
                       {!! $errors->first('body','<span class="help-block">:message</span>') !!}
-                      
-                      
                     </div>  
+
 
                     <div class="form-group {{ $errors->has('iframe') ? 'text-danger' : ''}}">
                       <label>Contenido de la Publicación</label>
@@ -192,7 +190,7 @@
 
 
 
-  @push('scripts')
+@push('scripts')
   
 
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.1/min/dropzone.min.js"></script> 

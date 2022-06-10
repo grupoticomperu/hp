@@ -36,15 +36,15 @@ class UserSeeder extends Seeder
         $admin = new User;
         $admin->name = 'Michael';
         $admin->email = 'michael@ticomperu.com';
-        $admin->password = bcrypt('12345678');
+        $admin->password = '$2y$10$8MtRuCQn1tUeClYvMy8VseUKp0ga9IB8V0pGqugxoiR2OyEp8iOnm';
         $admin->save();
 
         $admin->assignRole($adminRole);
 
 
         $writer = new User;
-        $writer->name = 'Karin';
-        $writer->email = 'karin@ticomperu.com';
+        $writer->name = 'pepe';
+        $writer->email = 'pepe@ticomperu.com';
         $writer->password = bcrypt('12345678');
         $writer->save();
 
@@ -58,8 +58,8 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Karin Cabello Ramirez',
-            'email' => 'karin@ticomperu.com',
+            'name' => 'pepe cabello',
+            'email' => 'pepe@ticomperu.com',
             'password' => bcrypt('12345678')
         ]);
 */

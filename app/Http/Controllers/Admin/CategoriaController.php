@@ -30,12 +30,7 @@ class CategoriaController extends Controller
         return view('admin.categorias.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCategoriaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreCategoriaRequest $request)
     {
         // $category = Category::create($request->all());
@@ -53,35 +48,19 @@ class CategoriaController extends Controller
         return back()->with('flash', 'Categoria creado con exito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Categoria $categorium)
     {
         return view('admin.categorias.show', compact('categorium'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Categoria $categorium)
     {
         return view('admin.categorias.edit', compact('categorium'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCategoriaRequest  $request
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Categoria $categorium)
     {
         if($request->hasFile('imagen'))
