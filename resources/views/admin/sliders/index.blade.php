@@ -44,7 +44,7 @@
                   @foreach ($sliders as $slider)
                       <tr>
                           <td>{{ $slider->id }}</td>
-                          <td><img width="100px" src="{{ Storage::url($slider->image) }}"></td>
+                          <td><img width="100px" src="{{ Storage::disk("s3")->url($slider->image) }}"></td>
                           <td>{{ $slider->title1 }}</td>
                           <td>{{ $slider->title2 }}</td>
                           <td>{{ $slider->title3 }}</td>

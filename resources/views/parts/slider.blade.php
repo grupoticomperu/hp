@@ -2,7 +2,7 @@
    <section class="section swiper-container swiper-slider swiper_style-2 swiper-controls-modern" data-loop="true" data-autoplay="3500" data-simulate-touch="false">
     <div class="swiper-wrapper">
         @foreach ( $sliders as $slider )
-        <div class="swiper-slide bg-image-dark" data-slide-bg="{{ Storage::url($slider->image) }}">
+        <div class="swiper-slide bg-image-dark" data-slide-bg="{{ Storage::disk("s3")->url($slider->image) }}">
           <div class="swiper-slide-caption">
             <div class="swiper-slide-decoration" data-caption-animate="scaleInY"><span></span></div>
             <div class="container">

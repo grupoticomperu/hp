@@ -41,7 +41,7 @@
 
 
                         <div class="form-group">
-                            <p class="text-danger">* obligatorio subir imagen</p>
+                            <p class="text-danger">* obligatorio subir imagen * 1920  por 850 </p>
                           <label  for="image">Subir imagen</label> 
                           <input type="file"  name="image" value="{{old('image')}}">
                           

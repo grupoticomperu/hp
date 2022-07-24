@@ -45,7 +45,7 @@
                       <tr> 
                           <td>{{ $service->id }}</td>
                           <td>{{ $service->title }}</td>
-                          <td><img width="50px"src="{{ Storage::url($service->imagen1) }}" alt=""></td>
+                          <td><img width="50px"src="{{ Storage::disk("s3")->url($service->imagen1) }}" alt=""></td>
                           <td>{{ $service->shortdescription }}</td>
                           <td>{{ $service->longdescription }}</td>
                           <td>

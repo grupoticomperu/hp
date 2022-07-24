@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="{{ Storage::url($configurations->icon) }}" type="/image/x-icon">
+    <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="{{ Storage::disk("s3")->url($configurations->icon) }}" type="/image/x-icon">
     <!-- Stylesheets-->
    {{--  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway:300,400,700%7COpen+Sans:300,400,700,900%7CLato:900"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Cantata+One&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     <!-- Page Loader-->
     
     <div id="page-loader">
-      <div class="page-loader-body"><img src="{{ Storage::url($configurations->logo) }}" alt="TICOM diseño de pagins web" width="178" height="46"/>
+      <div class="page-loader-body"><img src="{{ Storage::disk("s3")->url($configurations->logo) }}" alt="TICOM diseño de pagins web" width="178" height="46"/>
         <div class="cssload-wrapper">
           <div class="cssload-border">
             <div class="cssload-whitespace">
@@ -89,7 +89,7 @@
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand"><a class="brand" href="/">
-                      <div class="brand__name"><img class="brand-logo-dark" src="{{ Storage::url($configurations->logo) }}" alt="" width="178" height="46"/><img class="brand-logo-light" src="{{ Storage::url($configurations->logo) }}" alt="" width="178" height="46"/>
+                      <div class="brand__name"><img class="brand-logo-dark" src="{{ Storage::disk("s3")->url($configurations->logo) }}" alt="Hosting Peru" width="178" height="46"/><img class="brand-logo-light" src="{{ Storage::url($configurations->logo) }}" alt="" width="178" height="46"/>
                       </div></a></div>
                 </div>
                 <!-- RD Navbar Nav Wrap-->

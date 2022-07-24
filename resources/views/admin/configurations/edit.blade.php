@@ -124,7 +124,7 @@
                     <div class="col-md-6">
                         <div class="image-wrapper">
                             @isset($configuration->logo)
-                                <img width="200px" id="logo" src="{{Storage::url($configuration->logo)}}" alt="TICOM Diseño de Páginas Web">
+                                <img width="200px" id="logo" src="{{Storage::disk("s3")->url($configuration->logo)}}" alt="TICOM Diseño de Páginas Web">
                             @else
                                 <img width="200px" id="logo" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                             @endif
@@ -154,7 +154,7 @@
                     <div class="col-md-6 ">
                         <div class="image-wrapper">
                             @isset($configuration->icon)
-                                <img width="60px" id="icon" src="{{Storage::url($configuration->icon)}}" alt="TICOM Diseño de Páginas Web">
+                                <img width="60px" id="icon" src="{{Storage::disk("s3")->url($configuration->icon)}}" alt="TICOM Diseño de Páginas Web">
                             @else
                                 <img width="60px" id="icon" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                             @endif

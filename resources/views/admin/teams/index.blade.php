@@ -47,7 +47,7 @@
                           <td>{{ $team->id }}</td>
                           <td>{{ $team->name }}</td>
                           <td>{{ $team->profesion }}</td>
-                          <td><img width="50px"src="{{ Storage::url($team->image) }}" alt=""></td>
+                          <td><img width="50px"src="{{ Storage::disk("s3")->url($team->image) }}" alt=""></td>
                           <td>{!! $team->shortdescription !!}</td>
                           <td>{!! $team->longdescription !!}</td>
                           <td>

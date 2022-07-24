@@ -32,7 +32,7 @@
             <div class="col-md-6 col-xl-4">
               <!-- Post classic-->
               <article class="post-minimal"><a class="post-minimal-figure-link" href="{{ route('proyecto.showp', $work) }}">
-                <img src="{{ Storage::url($work->image) }}" alt="{{ $work->title }}" width="418" height="315"/></a>
+                <img src="{{ Storage::disk("s3")->url($work->image) }}" alt="{{ $work->title }}" width="418" height="315"/></a>
                 <div class="post-classic-title">
                   <h5><a href="{{ route('proyecto.showp', $work) }}">{{ $work->title }}</a></h5>
                 </div>

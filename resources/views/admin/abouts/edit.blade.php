@@ -62,7 +62,7 @@
                     <div class="col-md-6">
                         <div class="image-wrapper">
                             @isset($about->imagen1)
-                                <img width="200px" id="imagen1" src="{{Storage::url($about->imagen1)}}" alt="TICOM Diseño de Páginas Web">
+                                <img width="200px" id="imagen1" src="{{Storage::disk("s3")->url($about->imagen1)}}" alt="TICOM Diseño de Páginas Web">
                             @else
                                 <img width="200px" id="imagen1" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                             @endif
@@ -81,7 +81,7 @@
                 
                         </div>
                 
-                        <p>Escoja tu imagen</p>
+                        <p>Escoja tu imagen  1920  por 238</p>
                     </div>
 
                 </div>
@@ -91,7 +91,7 @@
                   <div class="col-md-6">
                       <div class="image-wrapper">
                           @isset($about->imagen2)
-                              <img width="200px" id="imagen2" src="{{Storage::url($about->imagen2)}}" alt="TICOM Diseño de Páginas Web">
+                              <img width="200px" id="imagen2" src="{{ Storage::disk("s3")->url($about->imagen2) }}" alt="TICOM Diseño de Páginas Web">
                           @else
                               <img width="200px" id="imagen2" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                           @endif
@@ -110,7 +110,7 @@
               
                       </div>
               
-                      <p>Escoja tu imagen</p>
+                      <p>Escoja tu imagen   601  por 359 </p>
                   </div>
 
               </div>

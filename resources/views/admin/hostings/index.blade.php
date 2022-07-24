@@ -51,7 +51,7 @@
                           <td>{{ $hosting->state }}</td>
                           <td>
                               {{-- <a href="{{ route('hostings.show', $hosting)}}" class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a> --}}
-                               <a href="{{ route('hostings.edit', $hosting)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a> 
+                               <a href="{{ route('hostings.edit', $hosting->id)}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a> 
                               <a href="" class="btn btn-xs btn-danger"><i class="fas fa-times-circle"></i></a>
 
                           </td>

@@ -33,7 +33,7 @@
      
                 <h4 class="post-single__title">{{ $work->title }}</h4>
                 
-                <img src="{{ Storage::url($work->image)  }}" alt="{{ $work->title }}" width="250" />
+                <img src="{{ Storage::disk("s3")->url($work->image)  }}" alt="{{ $work->title }}" width="250" />
                 <p>{!! $work->longdescription !!}</p>
                 <span> ver web : </span> <a href="{{ $work->website }}">{{ $work->customer }}</a>
 

@@ -14,6 +14,7 @@ class HostingsController extends Controller
     public function index()
     {
         $hostings = Hosting::all();
+        //$configurations = Configuration::all()->first();
         // $posts = Post::where('user_id', auth()->id())->get();
         /// $posts = auth()->user()->posts;
 
@@ -54,12 +55,15 @@ class HostingsController extends Controller
 
         if($request->hasFile('imagen'))
         {
-         $hosting->imagen = $request->file('imagen')->store('public/hostings/imagen');
+
+         //$hosting->imagen = $request->file('imagen')->store('public/hostings/imagen');
+         $hosting->imagen = Storage::disk('s3')->put('hostingperu/hosting', $request->file('imagen'), 'public');
         }
 
         if($request->hasFile('imagen2'))
         {
-         $hosting->imagen2 = $request->file('imagen2')->store('public/hostings/imagen2');
+        // $hosting->imagen2 = $request->file('imagen2')->store('public/hostings/imagen2');
+        $hosting->imagen2 = Storage::disk('s3')->put('hostingperu/hosting', $request->file('imagen2'), 'public');
         }
 
 
@@ -80,6 +84,7 @@ class HostingsController extends Controller
     public function edit(Hosting $hosting)
     {
         $subcategoryhosting = Subcategoryhosting::pluck('name', 'id');
+    
 
         return view('admin.hostings.edit', compact('hosting','subcategoryhosting'));
     }
@@ -103,7 +108,7 @@ class HostingsController extends Controller
         }  */
 
 
-        if($request->file('imagen')){
+/*         if($request->file('imagen')){
             $url = Storage::put('public/hostings/imagen', $request->file('imagen'));
             if($hosting->imagen){
                 Storage::delete($hosting->imagen);
@@ -111,10 +116,42 @@ class HostingsController extends Controller
                     'imagen' => $url
                 ]);
             }
+        } */
+
+
+        if($request->hasFile('imagen')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/hosting', $request->file('imagen'), 'public');
+            if($hosting->imagen){
+                Storage::disk('s3')->delete($hosting->imagen);
+                $hosting->update([
+                    'imagen' => $url
+                ]);
+            }else{
+                $hosting->create([
+                    'imagen' => $url
+                ]);
+            }
         }
 
 
-        if($request->file('imagen2')){
+        if($request->hasFile('imagen2')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/hosting', $request->file('imagen2'), 'public');
+            if($hosting->imagen2){
+                Storage::disk('s3')->delete($hosting->imagen2);
+                $hosting->update([
+                    'imagen2' => $url
+                ]);
+            }else{
+                $hosting->create([
+                    'imagen2' => $url
+                ]);
+            }
+        }
+
+
+       /*  if($request->file('imagen2')){
             $urll = Storage::put('public/hostings/imagen2', $request->file('imagen2'));
             if($hosting->imagen2){
                 Storage::delete($hosting->imagen2);
@@ -122,7 +159,7 @@ class HostingsController extends Controller
                     'imagen2' => $urll
                 ]);
             }
-        }
+        } */
 
         //return redirect()->route('hostings.edit',$hosting)->with('flash', 'El plan del Hosting se actualizo');
         //return back()->with('flash', 'Datos actualizados con exito');

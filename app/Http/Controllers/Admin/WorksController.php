@@ -37,17 +37,18 @@ class WorksController extends Controller
     	]);
 
 
-        $service = (new Work)->fill($request->all());
+        $works = (new Work)->fill($request->all());
 
         if($request->hasFile('image'))
         {
-         $service->image = $request->file('image')->store('public/work/image');
+            $works->image = Storage::disk('s3')->put('hostingperu/work', $request->file('image'), 'public');
+            //$service->image = $request->file('image')->store('public/work/image');
         }
 
        
 
 
-        $service->save();
+        $works->save();
 
         return redirect()->route('works.index')->with('flash', 'Trabajo creado con exito');
     }
@@ -81,7 +82,7 @@ class WorksController extends Controller
 
 
 
-        if($request->file('image')){
+        /* if($request->file('image')){
             $url = Storage::put('public/work/image', $request->file('image'));
             if($work->image){
                 Storage::delete($work->image);
@@ -90,6 +91,26 @@ class WorksController extends Controller
                 ]);
             }
         }
+         */
+
+        if($request->hasFile('image')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/work', $request->file('image'), 'public');
+            if($work->image){
+                Storage::disk('s3')->delete($work->image);
+                $work->update([
+                    'image' => $url
+                ]);
+            }else{
+                $work->create([
+                    'image' => $url
+                ]);
+            }
+        }
+
+
+
+
 
         return redirect()->route('works.index')->with('flash', 'Trabajo Actualizado con exito');
 

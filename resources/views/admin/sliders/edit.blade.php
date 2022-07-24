@@ -109,7 +109,7 @@
                     <div class="col-md-6">
                         <div class="image-wrapper">
                             @isset($slider->image)
-                                <img width="400px" id="image" src="{{Storage::url($slider->image)}}" alt="">
+                                <img width="400px" id="image" src="{{Storage::disk("s3")->url($slider->image)}}" alt="">
                             @else
                                 <img id="image" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                             @endif
@@ -128,7 +128,7 @@
                 
                         </div>
                 
-                        <p>Escoja tu imagen</p>
+                        <p>Escoja tu imagen: 1920 por 850</p>
                     </div>
 
                 </div>

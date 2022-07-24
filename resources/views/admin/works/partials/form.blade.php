@@ -71,7 +71,7 @@
             <div class="col">
                 <div class="image-wrapper">
                     @isset($work->image)
-                        <img width="300px" id="picture" src="{{Storage::url($work->image)}}" alt="">
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($work->image)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif

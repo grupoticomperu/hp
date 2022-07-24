@@ -137,7 +137,7 @@
     <div class="col">
         <div class="image-wrapper">
             @isset($hosting->imagen)
-                <img width="300px" id="picture" src="{{Storage::url($hosting->imagen)}}" alt="">
+                <img width="300px" id="picture" src="{{Storage::disk("s3")->url($hosting->imagen)}}" alt="">
             @else
                 <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
             @endif
@@ -165,7 +165,7 @@
     <div class="col">
         <div class="image-wrapper">
             @isset($hosting->imagen2)
-                <img width="300px" id="picture" src="{{Storage::url($hosting->imagen2)}}" alt="">
+                <img width="300px" id="picture" src="{{Storage::disk("s3")->url($hosting->imagen2)}}" alt="">
             @else
                 <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
             @endif

@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="image-wrapper">
             @isset($homeservice->image)
-                <img width="500px" id="picture" src="{{Storage::url($homeservice->image)}}" alt="">
+                <img width="500px" id="picture" src="{{Storage::disk("s3")->url($homeservice->image)}}" alt="">
             @else
                 <img id="picture" src="/storage/homeservices/default.jpg" alt="">
             @endif
@@ -21,7 +21,7 @@
 
         </div>
 
-        <p>seleccione tu imagen </p>
+        <p>seleccione tu imagen * 960 por 640 * derecha    * 651 por 491 * izquierda  </p>
     </div>
 
     

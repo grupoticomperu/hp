@@ -25,13 +25,21 @@ class HomeservicesController extends Controller
 
     public function store(Request $request)
     {
+
         $homeservice = (new Homeservice)->fill($request->all());
 
 
-        if($request->hasFile('image'))
+  /*       if($request->hasFile('image'))
         {
          $homeservice->image = $request->file('image')->store('public/homeservices');
-        }
+        } */
+
+        $homeservice->image = Storage::disk('s3')->put('hostingperu/homeservice', $request->file('image'), 'public');
+
+
+
+
+
  
          $homeservice->save();
  
@@ -65,7 +73,7 @@ class HomeservicesController extends Controller
 
         $homeservice->update($request->all());
 
-        if($request->file('image')){
+        /* if($request->file('image')){
             $url = Storage::put('public/homeservices', $request->file('image'));
             if($homeservice->image){
                 Storage::delete($homeservice->image);
@@ -73,7 +81,23 @@ class HomeservicesController extends Controller
                     'image' => $url
                 ]);
             }
+        } */
+
+        if($request->hasFile('image')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/homeservice', $request->file('image'), 'public');
+            if($homeservice->image){
+                Storage::disk('s3')->delete($homeservice->image);
+                $homeservice->update([
+                    'image' => $url
+                ]);
+            }else{
+                $homeservice->create([
+                    'image' => $url
+                ]);
+            }
         }
+
 
 
         return redirect()->route('homeservices.index')->with('flash', 'Datos Actualizado con exito');

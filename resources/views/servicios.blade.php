@@ -23,7 +23,7 @@
 
       <!-- Breadcrumbs-->
       <section class="breadcrumbs-custom">
-            <div class="breadcrumbs-custom__aside bg-image context-dark" style="background-image: url({{ Storage::url($service->imagen1) }});">
+            <div class="breadcrumbs-custom__aside bg-image context-dark" style="background-image: url({{ Storage::disk("s3")->url($service->imagen1) }});">
               <div class="container">
                 <h2 class="breadcrumbs-custom__title">{{ $service->title }}</h2>
               </div>
@@ -43,7 +43,7 @@
         <div class="container">
           <h2>¿ porque Nosotros ?</h2>
           <div class="row row-30">
-
+{{-- 
             @foreach ($whies as $why)
               <div class="col-md-6 col-lg-4">
                             <!-- Box Alice-->
@@ -59,7 +59,7 @@
                               </div>
                             </article>
               </div>
-           @endforeach
+           @endforeach --}}
           </div>
         </div>
       </section>
@@ -81,7 +81,7 @@
                 </div>
               </div>
             </div>
-            <div class="object-wrap__body object-wrap__body-sizing-1 object-wrap__body-md-right bg-image" style="background-image: url({{ Storage::url($service->imagen2) }})"></div>
+            <div class="object-wrap__body object-wrap__body-sizing-1 object-wrap__body-md-right bg-image" style="background-image: url({{ Storage::disk("s3")->url($service->imagen2) }})"></div>
     
           </section>
 
@@ -95,7 +95,7 @@
                 <div class="col-md-9 col-lg-5">
                   {!! $service->longdescription !!}
                 </div>
-                <div class="col-md-9 col-lg-6"><img src="{{ Storage::url($service->imagen3) }}" alt="" width="652" height="491"/>
+                <div class="col-md-9 col-lg-6"><img src="{{ Storage::disk("s3")->url($service->imagen3) }}" alt="" width="652" height="491"/>
                 </div>
               </div>
     
@@ -103,7 +103,7 @@
           </section>
 
 
-          <section class="section parallax-container bg-gray-darker" data-parallax-img="{{ Storage::url($service->imagen4) }}">
+          <section class="section parallax-container bg-gray-darker" data-parallax-img="{{ Storage::disk("s3")->url($service->imagen4) }}">
             <div class="parallax-content">
               <div class="container section-xxl text-center">
                 <h2>{{ $service->titlemarket }}</h2>

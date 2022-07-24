@@ -46,7 +46,7 @@
                       <tr>
                           <td>{{ $homeservice->id }}</td>
                          
-                          <td><img width="100px" src="{{ Storage::url($homeservice->image) }}"></td>
+                          <td><img width="100px" src="{{ Storage::disk("s3")->url($homeservice->image) }}"></td>
 
                           <td>{{ $homeservice->title }}</td>
                           <td>{!! $homeservice->description !!}</td>

@@ -110,7 +110,7 @@
             <div class="col">
                 <div class="image-wrapper">
                     @isset($service->imagen1)
-                        <img width="300px" id="picture" src="{{Storage::url($service->imagen1)}}" alt="">
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($service->imagen1)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif
@@ -138,7 +138,7 @@
             <div class="col">
                 <div class="image-wrapper">
                     @isset($service->imagen2)
-                        <img width="300px" id="picture" src="{{Storage::url($service->imagen2)}}" alt="">
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($service->imagen2)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif
@@ -167,7 +167,7 @@
             <div class="col">
                 <div class="image-wrapper">
                     @isset($service->imagen3)
-                        <img width="300px" id="picture" src="{{Storage::url($service->imagen3)}}" alt="">
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($service->imagen3)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif
@@ -194,7 +194,7 @@
             <div class="col">
                 <div class="image-wrapper">
                     @isset($service->imagen4)
-                        <img width="300px" id="picture" src="{{Storage::url($service->imagen4)}}" alt="">
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($service->imagen4)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif

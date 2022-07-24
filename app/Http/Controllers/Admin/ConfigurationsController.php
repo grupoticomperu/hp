@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Configuration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ConfigurationsController extends Controller
 {
@@ -51,12 +52,14 @@ class ConfigurationsController extends Controller
  
          if($request->hasFile('logo'))
          {
-          $configuration->logo = $request->file('logo')->store('public/configurations');
+            $configuration->logo = Storage::disk('s3')->put('hostingperu/configurations', $request->file('logo'), 'public');
+          //$configuration->logo = $request->file('logo')->store('public/configurations');
          } 
  
          if($request->hasFile('icon'))
          {
-          $configuration->icon = $request->file('icon')->store('public/configurations');
+            $configuration->icon = Storage::disk('s3')->put('hostingperu/configurations', $request->file('icon'), 'public');
+           //$configuration->icon = $request->file('icon')->store('public/configurations');
          } 
 
 

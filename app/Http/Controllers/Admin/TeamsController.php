@@ -36,7 +36,8 @@ class TeamsController extends Controller
 
         if($request->hasFile('image'))
         {
-         $team->image = $request->file('image')->store('public/team/image');
+         //$team->image = $request->file('image')->store('public/team/image');
+         $team->image = Storage::disk('s3')->put('hostingperu/team', $request->file('image'), 'public');
         }
 
        
@@ -72,7 +73,25 @@ class TeamsController extends Controller
 
 
 
-        if($request->file('image')){
+
+        if($request->hasFile('image')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/team', $request->file('image'), 'public');
+            if($team->image){
+                Storage::disk('s3')->delete($team->image);
+                $team->update([
+                    'image' => $url
+                ]);
+            }else{
+                $team->create([
+                    'image' => $url
+                ]);
+            }
+        }
+
+
+
+/*         if($request->file('image')){
             $url = Storage::put('public/team/image', $request->file('image'));
             if($team->image){
                 Storage::delete($team->image);
@@ -80,7 +99,7 @@ class TeamsController extends Controller
                     'image' => $url
                 ]);
             }
-        }
+        } */
 
         return redirect()->route('teams.index')->with('flash', 'Trabajo Actualizado con exito');
     }

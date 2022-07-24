@@ -37,7 +37,10 @@ class SlidersController extends Controller
 
        if($request->hasFile('image'))
        {
-        $slider->image = $request->file('image')->store('public/sliders');
+        //$slider->image = $request->file('image')->store('public/sliders');
+
+        $slider->image = Storage::disk('s3')->put('hostingperu/sliders', $request->file('image'), 'public');
+
        }
 
         $slider->save();
@@ -68,10 +71,28 @@ class SlidersController extends Controller
 
         $slider->update($request->all());
 
-        if($request->hasFile('image'))
+        /* if($request->hasFile('image'))
         {
          $slider->image = $request->file('image')->store('public/sliders');
-        } 
+        }  */
+
+        if($request->hasFile('image')){
+           
+            $url = Storage::disk('s3')->put('hostingperu/sliders', $request->file('image'), 'public');
+            if($slider->image){
+                Storage::disk('s3')->delete($slider->image);
+                $slider->update([
+                    'image' => $url
+                ]);
+            }else{
+                $slider->create([
+                    'image' => $url
+                ]);
+            }
+        }
+
+
+
 
         $slider->update();
         //public se refiere a storage/app/public

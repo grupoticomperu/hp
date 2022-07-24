@@ -20,7 +20,7 @@
 
       <!-- Breadcrumbs-->
       <section class="breadcrumbs-custom">
-        <div class="breadcrumbs-custom__aside bg-image context-dark" style="background-image: url({{ Storage::url($abouts->imagen1) }});">
+        <div class="breadcrumbs-custom__aside bg-image context-dark" style="background-image: url({{ Storage::disk("s3")->url($abouts->imagen1) }});">
           <div class="container">
             <h2 class="breadcrumbs-custom__title">Nosotros</h2>
           </div>
@@ -40,7 +40,7 @@
         <div class="container">
           <div class="row row-50 justify-content-md-center justify-content-lg-start">
             <div class="col-md-10 col-lg-6">
-              <div class="image-custom-1"><img src="{{ Storage::url($abouts->imagen2) }}" alt="" width="601" height="359"/>
+              <div class="image-custom-1"><img src="{{ Storage::disk("s3")->url($abouts->imagen2) }}" alt="Hosting Peru" width="601" height="359"/>
               </div>
             </div>
             <div class="col-md-10 col-lg-6">
@@ -89,7 +89,7 @@
               <!-- Card Creative-->
               <article class="card-creative">
                 <div class="card-creative__inner">
-                  <figure class="card-creative__media"><img src="{{ Storage::url($team->image) }}" alt="{{ $team->name }}" width="230" height="211"/>
+                  <figure class="card-creative__media"><img src="{{ Storage::disk("s3")->url($team->image) }}" alt="{{ $team->name }}" width="230" height="211"/>
                   </figure>
                   <p class="card-creative__title">{{ $team->name }}</p>
                   <p class="card-creative__subtitle">{{ $team->rol }}</p>
@@ -128,7 +128,7 @@
             
             <div class="col-md-6 col-xl-4">
               <!-- Post classic-->
-              <article class="post-minimal"><a class="post-minimal-figure-link" href="blog-post.html"><img src="{{ Storage::url($work->image) }}" alt="{{ $work->title }}" width="418" height="315"/></a>
+              <article class="post-minimal"><a class="post-minimal-figure-link" href="blog-post.html"><img src="{{ Storage::disk("s3")->url($work->image) }}" alt="{{ $work->title }}" width="418" height="315"/></a>
                 <div class="post-classic-title">
                   <h5><a href="{{ route('proyecto.showp', $work) }}">{{ $work->title }}</a></h5>
                   

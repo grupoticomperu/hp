@@ -65,8 +65,8 @@
         <div class="col-6 mb-8 row p-2 mb-4" >
             <div class="col">
                 <div class="image-wrapper">
-                    @isset($work->image)
-                        <img width="300px" id="picture" src="{{Storage::url($work->image)}}" alt="">
+                    @isset($team->image)
+                        <img width="300px" id="picture" src="{{Storage::disk("s3")->url($team->image)}}" alt="">
                     @else
                         <img width="300px" id="picture" src="https://cdn.pixabay.com/photo/2021/11/13/18/02/lake-6791971_960_720.jpg" alt="">
                     @endif
