@@ -45,7 +45,15 @@
                 </div>
                 <h4 class="post-single__title">{{ $post->title }}</h4>
                 <p>{!! $post->body !!}</p>
-                <img src="{{ $post->photos->first()->url }}" alt="" width="715" height="417"/>
+
+
+                 <img src="{{ $post->photos->first()->url }}" alt="" width="715" height="417"/>
+
+
+
+
+
+
                 
 
 {{--                 @include('partials.social-links',['description'=>$post->title])

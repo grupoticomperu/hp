@@ -4,46 +4,56 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link ">
+            <a href="" class="nav-link 
+            @if (request()->is('admin/posts')) 
+              active
+            @elseif(request()->is('admin/categories'))
+              active
+            @elseif(request()->is('admin/tag'))
+              active
+            @elseif(request()->is('admin/users'))
+              active
+            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 BLOG
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href=" {{ route('admin.posts.index')}} " class="nav-link {{ request()->is('admin/posts') ? 'active' : ''}}">
-                  <i class="fa fa-address-book"></i>
-                  <p> Posts</p>
-                </a>
-              </li>
+
+                <li class="nav-item">
+                  <a href=" {{ route('admin.posts.index')}} " class="nav-link {{ request()->is('admin/posts') ? 'active' : ''}}">
+                    <i class="fa fa-address-book"></i>
+                    <p> Posts </p>
+                  </a>
+                </li>
 
 
 
-              <li class="nav-item">
-                <a href=" {{ route('categories.index')}} " class="nav-link {{ request()->is('admin/categories') ? 'active' : ''}}">
-                  <i class="fa fa-address-book"></i>
-                  <p> Categorias</p>
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a href=" {{ route('tag.index')}} " class="nav-link {{ request()->is('admin/tag') ? 'active' : ''}}">
-                  <i class="fa fa-address-book"></i>
-                  <p> Tag</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a href=" {{ route('categories.index')}} " class="nav-link {{ request()->is('admin/categories') ? 'active' : ''}}">
+                    <i class="fa fa-address-book"></i>
+                    <p> Categorias </p>
+                  </a>
+                </li>
+                
+                <li class="nav-item">
+                  <a href=" {{ route('tag.index')}} " class="nav-link {{ request()->is('admin/tag') ? 'active' : ''}}">
+                    <i class="fa fa-address-book"></i>
+                    <p> Tag</p>
+                  </a>
+                </li>
 
 
-              <li class="nav-item">
-                <a href=" {{ route('admin.users.index')}} " class="nav-link {{ request()->is('admin/users') ? 'active' : ''}}">
-                  <i class="fa fa-address-book"></i>
-                  <p> Ver Usuarios</p>
-                </a>
-              </li>
-
-
+                <li class="nav-item">
+                  <a href=" {{ route('admin.users.index')}} " class="nav-link {{ request()->is('admin/users') ? 'active' : ''}}">
+                    <i class="fa fa-address-book"></i>
+                    <p> Ver Usuarios</p>
+                  </a>
+                </li>
             </ul>
           </li>
 
@@ -51,7 +61,15 @@
 
 
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link ">
+            <a href="{{ route('admin.product.index') }}" class="nav-link 
+            @if (request()->is('admin/product')) 
+            active
+            @elseif(request()->is('admin/categoria'))
+              active
+            @elseif(request()->is('admin/marca'))
+              active
+            @endif 
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 PRODUCTOS
@@ -93,7 +111,19 @@
 
 
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link ">
+            <a href="{{ route('sliders.index') }}" class="nav-link 
+            
+            @if (request()->is('admin/configurations/1/edit')) 
+            active
+            @elseif(request()->is('admin/sliders'))
+              active
+            @elseif(request()->is('admin/offers'))
+              active
+            @elseif(request()->is('admin/homeservices'))
+              active
+            
+            @endif 
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 HOME
@@ -102,20 +132,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href=" {{ route('configurations.edit', 1)}} " class="nav-link {{ request()->is('admin/configurations*') ? 'active' : ''}}">
+                <a href=" {{ route('configurations.edit', 1)}} " class="nav-link {{ request()->is('admin/configurations/1/edit') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Configuraciones</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href=" {{ route('sliders.index')}} " class="nav-link {{ request()->is('admin/sliders*') ? 'active' : ''}}">
+                <a href=" {{ route('sliders.index')}} " class="nav-link {{ request()->is('admin/sliders') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Slider</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href=" {{ route('offers.index')}} " class="nav-link {{ request()->is('admin/offers*') ? 'active' : ''}}">
+                <a href=" {{ route('offers.index')}} " class="nav-link {{ request()->is('admin/offers') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p> Ofrecemos</p>
                 </a>
@@ -123,7 +153,7 @@
 
 
               <li class="nav-item">
-                <a href=" {{ route('homeservices.index')}} " class="nav-link {{ request()->is('admin/homeservices*') ? 'active' : ''}}">
+                <a href=" {{ route('homeservices.index')}} " class="nav-link {{ request()->is('admin/homeservices') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p> Servicios del Home</p>
                 </a>
@@ -136,7 +166,18 @@
 
 
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link ">
+            <a href="{{ route('admin.product.index') }}" class="nav-link 
+            @if (request()->is('admin/abouts/1/edit')) 
+              active
+            @elseif(request()->is('admin/whies'))
+              active
+            @elseif(request()->is('admin/questions'))
+              active
+            @elseif(request()->is('admin/works'))
+              active
+            @elseif(request()->is('admin/teams'))
+              active             
+            @endif ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 NOSOTROS
@@ -145,28 +186,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href=" {{ route('abouts.edit', 1)}} " class="nav-link {{ request()->is('admin/abouts*') ? 'active' : ''}}">
+                <a href=" {{ route('abouts.edit', 1)}} " class="nav-link {{ request()->is('admin/abouts/1/edit') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Nosotros</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href=" {{ route('whies.index')}} " class="nav-link {{ request()->is('admin/whies*') ? 'active' : ''}}">
+                <a href=" {{ route('whies.index')}} " class="nav-link {{ request()->is('admin/whies') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Porque Nosotros</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href=" {{ route('questions.index')}} " class="nav-link {{ request()->is('admin/questions*') ? 'active' : ''}}">
+                <a href=" {{ route('questions.index')}} " class="nav-link {{ request()->is('admin/questions') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Preguntas Frecuentes</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href=" {{ route('works.index')}} " class="nav-link {{ request()->is('admin/works*') ? 'active' : ''}}">
+                <a href=" {{ route('works.index')}} " class="nav-link {{ request()->is('admin/works') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Trabajos</p>
                 </a>
@@ -174,7 +215,7 @@
 
 
               <li class="nav-item">
-                <a href=" {{ route('teams.index')}} " class="nav-link {{ request()->is('admin/teams*') ? 'active' : ''}}">
+                <a href=" {{ route('teams.index')}} " class="nav-link {{ request()->is('admin/teams') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Equipo</p>
                 </a>
@@ -188,7 +229,11 @@
 
 
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link ">
+            <a href="{{ route('dashboard') }}" class="nav-link 
+            @if (request()->is('admin/hostings')) 
+              active
+            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Hosting
@@ -199,7 +244,7 @@
 
 
               <li class="nav-item">
-                <a href=" {{ route('hostings.index')}} " class="nav-link {{ request()->is('admin/hostings*') ? 'active' : ''}}">
+                <a href=" {{ route('hostings.index')}} " class="nav-link {{ request()->is('admin/hostings') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Hosting</p>
                 </a>
@@ -213,7 +258,11 @@
 
 
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link 
+            @if (request()->is('admin/services')) 
+              active
+            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Servicios
@@ -224,11 +273,14 @@
 
 
               <li class="nav-item">
-                <a href=" {{ route('services.index')}} " class="nav-link {{ request()->is('admin/services*') ? 'active' : ''}}">
+                <a href=" {{ route('services.index')}} " class="nav-link {{ request()->is('admin/services') ? 'active' : ''}}">
                   <i class="fa fa-address-book"></i>
                   <p>Servicios</p>
                 </a>
               </li>
+
+
+
 
 
             </ul>

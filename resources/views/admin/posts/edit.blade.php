@@ -136,9 +136,7 @@
         
                 <div class="form-group {{ $errors->has('excerpt') ? 'text-danger' : ''}}">
                   <label>Resumen de la Publicación</label>
-                  <textarea name="excerpt" class="form-control" placeholder="Ingrese resumen de la publicación">
-                    {{old('excerpt', $post->excerpt)}}
-                  </textarea>
+                  <textarea name="excerpt" class="form-control" placeholder="Ingrese resumen de la publicación">{{old('excerpt', $post->excerpt)}}</textarea>
                   {!! $errors->first('excerpt','<span class="help-block">:message</span>') !!}             
                 </div>
                 

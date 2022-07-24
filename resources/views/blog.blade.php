@@ -53,15 +53,20 @@
                        <article class="post-classic">        
                         <h3 class="post-classic__title"><a href="{{ route('posts.show', $post) }}">{{ $post->title }} </a></h3>
                         <ul class="post-classic__meta">
-                          <li><span class="icon mdi mdi-calendar-blank"></span><a href="blog-post.html">
+                          <li><span class="icon mdi mdi-calendar-blank"></span><a href="{{ route('posts.show', $post) }}">
                               <time datetime="2022">{{ $post->published_at }}</time></a></li>
                         
                           <li><span class="icon mdi mdi-account"></span><span>por </span><a href="#">{{ $post->owner->name }}</a></li>
                         </ul>
-                        <div class="post-classic__media"><a class="post-classic__figure" href="blog-post.html">
-                          @if ($post->photos->first())
-                          <img class="post-classic__image" src="{{ $post->photos->first()->url  }}" alt="" width="715" height="417"/></a></div>
-                          @endif
+
+               {{--          @include( $post->viewType('home') ) --}}
+
+
+                        <div class="post-classic__media"><a class="post-classic__figure" href="{{ route('posts.show', $post) }}">
+                          
+                           @if ($post->photos->first())
+                          <img class="post-classic__image" src="{{ $post->photos->first()->url  }}" alt="{{ $post->title }}" width="715" height="417"/></a></div>
+                          @endif 
                           
                           <a href=" {{ route('posts.show', $post) }}" class="text-uppercase c-green button button-block button-secondary button-ujarak">ver más</a>
              

@@ -146,51 +146,50 @@
       <!-- Slider-->
    
 
-	  <!-- Fin del slider-->
-
-      <!-- What We Offer-->
-
-	  <!-- What We Offer-->
-
-      <!-- The Power of Bootstrap Toolkit-->
- 	  <!-- fin The Power of Bootstrap Toolkit-->
-
-      <!-- Content Driven Design-->
-      <!-- fin de Content Driven Design-->
-
-      <!-- Pricing Tables-->
-	  <!-- fin de Pricing Tables-->
-
-	   <!-- Parallax-->
-
-
-
-      <!-- Why Choose Us-->
-
-
-      <!-- works-->
-
-
-
-      <!-- Latest News & Updates-->
-
-
-      <!-- Testimonials-->
-
-
-	  <!-- questionss-->
-	  <!-- fin de questionss-->
-
-
-
-      <!-- Partners-->
-	  <!-- fin de Partners-->
-
+	 
 
       <!-- Page Footer-->
       <footer class="section footer-modern context-dark">
         <div class="footer-modern__main bg-gray-3">
           <div class="container">
+
+
+
+<!-- Messenger Plugin de chat Code -->
+<div id="fb-root"></div>
+
+<!-- Your Plugin de chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "310743828941718");
+  chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v14.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
             <div class="row row-50 justify-content-sm-center justify-content-md-start justify-content-lg-between">
               <div class="col-sm-6 col-md-4 col-lg-3">
                 <p class="custom-heading-3">TICOM</p>

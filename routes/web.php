@@ -1,5 +1,6 @@
 <?php
 
+
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Post;
@@ -43,6 +44,7 @@ Auth::routes();
 
 //Route::get('admin', 'App\Http\Controllers\AdminController@index');//llama al dashboard
 
+
 Route::group([
              // 'as' => 'admin',
               'prefix' =>'admin', 
@@ -72,7 +74,7 @@ Route::group([
              Route::post('posts/{post:id}/photos', 'PhotoController@store')->name('admin.posts.photos.store');
 
 
-             Route::delete('posts/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
+             Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
              
           
              Route::get('product', 'ProductController@index')->name('admin.product.index');
